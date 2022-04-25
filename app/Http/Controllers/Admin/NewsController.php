@@ -56,6 +56,17 @@ public function index(Request $request)
       }
       return view('admin.news.index', ['posts' => $posts, 'cond_title' => $cond_title]);
   }
+  
+  public function edit(Request $request)
+  {
+      // News Modelからデータを取得する
+      $news = News::find($request->id);
+      if (empty($news)) {
+        abort(404);    
+      }
+      return view('admin.news.edit', ['news_form' => $news]);
+  }
+
 public function update(Request $request)
   {
       // Validationをかける
@@ -80,4 +91,13 @@ public function update(Request $request)
       $news->fill($news_form)->save();
       return redirect('admin/news');
   }
+  public function delete(Request $request)
+  {
+      // 該当するNews Modelを取得
+      $news = News::find($request->id);
+      // 削除する
+      $news->delete();
+      return redirect('admin/news/');
+  }  
+
 }
