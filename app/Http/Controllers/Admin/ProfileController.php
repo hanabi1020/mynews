@@ -13,17 +13,14 @@ class ProfileController extends Controller
     {
         return view('admin.profile.create');
     }
+    
      public function create(Request $request)
     {
-    　// 以下を追記
-      // Varidationを行う
-      $this->validate($request, Profile::$rules);
-      $profile = new Profile;
-      $form = $request->all();
-       // データベースに保存する
-      $Profile->fill($form);
-      $Profile->save();
-      
+        
+        $this->validate($request,Profile::$rules);
+        $profile = new Profile;
+        $form = $request->all();
+
       return redirect('admin/profile/create');
     }
     
