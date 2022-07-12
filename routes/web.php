@@ -42,6 +42,26 @@ Route::group(['prefix' =>'admin'], function() {
 
 });
 
+
+//  新しく作り直したNewsControllerです。
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('news/create', 'Admin\NewsController_2@add');
+});
+
+
+// 18. 「PHP/Laravel 09 Routingについて理解する」の課題3
+Route::get('XXXXX/XXX', 'Admin\AAAController@bbb');
+
+
+
+// 新しく作り直したProfileControllerです。
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('profile/create', 'Admin\ProfileController_2@add');
+    Route::get('profile/edit','Admin\ProfileController_2@edit');
+});
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
