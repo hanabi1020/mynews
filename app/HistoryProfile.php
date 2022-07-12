@@ -4,19 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class History extends Model
+class HistoryProfile extends Model
 {
+    
     protected $guarded = array('id');
 
     public static $rules = array(
-        'news_id' => 'required',
+        'profile_id' => 'required',
         'edited_at' => 'required',
     );
     
-    
-    public function histories()
+    public function history_profiles()
     {
-        return $this->hasMany('App\History');
+        return $this->hasMany('App\HistoryProfile');
 
     }
 }
