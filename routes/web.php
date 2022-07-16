@@ -45,7 +45,7 @@ Route::group(['prefix' =>'admin'], function() {
 
 //  新しく作り直したNewsControllerです。
 Route::group(['prefix' => 'admin'], function() {
-    Route::get('news/create', 'Admin\NewsController_2@add');
+    Route::get('news/create_2', 'Admin\NewsController_2@add');
 });
 
 
@@ -56,8 +56,8 @@ Route::get('XXXXX/XXX', 'Admin\AAAController@bbb');
 
 // 新しく作り直したProfileControllerです。
 Route::group(['prefix' => 'admin'], function() {
-    Route::get('profile/create', 'Admin\ProfileController_2@add');
-    Route::get('profile/edit','Admin\ProfileController_2@edit');
+    Route::get('profile/create_2', 'Admin\ProfileController_2@add');
+    Route::get('profile/edit_2','Admin\ProfileController_2@edit');
 });
 
 
