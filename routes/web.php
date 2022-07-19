@@ -49,13 +49,21 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'NewsController@index');
 
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 
 
-//  新しく作り直したNewsControllerです。
+
+//  新しく作り直したNewsController
 Route::group(['prefix' => 'admin'], function() {
-    Route::get('news/create_2', 'Admin\NewsController_2@add');
+    Route::get('news/create_2', 'Admin\NewsController_2@add')->middleware('auth');
 });
 
 
@@ -64,11 +72,12 @@ Route::get('XXXXX/XXX', 'Admin\AAAController@bbb');
 
 
 
-// 新しく作り直したProfileControllerです。
+// 新しく作り直したProfileController
 Route::group(['prefix' => 'admin'], function() {
-    Route::get('profile/create_2', 'Admin\ProfileController_2@add');
-    Route::get('profile/edit_2','Admin\ProfileController_2@edit');
+    Route::get('profile/create_2', 'Admin\ProfileController_2@add')->middleware('auth');
+    Route::get('profile/edit_2','Admin\ProfileController_2@edit')->middleware('auth');
 });
+
 
 
 
