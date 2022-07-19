@@ -61,9 +61,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+
+
+
+
 //  新しく作り直したNewsController
 Route::group(['prefix' => 'admin'], function() {
     Route::get('news/create_2', 'Admin\NewsController_2@add')->middleware('auth');
+    Route::post('news/create_2', 'Admin\NewsController_2@create'); # 追記
 });
 
 
@@ -76,6 +81,8 @@ Route::get('XXXXX/XXX', 'Admin\AAAController@bbb');
 Route::group(['prefix' => 'admin'], function() {
     Route::get('profile/create_2', 'Admin\ProfileController_2@add')->middleware('auth');
     Route::get('profile/edit_2','Admin\ProfileController_2@edit')->middleware('auth');
+    Route::post('profile/create_2', 'Admin\ProfileController_2@create');
+    Route::post('profile/edit_2', 'Admin\ProfileController_2@update');
 });
 
 
