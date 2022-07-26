@@ -14,34 +14,66 @@ class ProfileController_2 extends Controller
         return view('admin.profile.create_2');
     }
 
-    public function create()
+    public function create(equest $request)
     {
         
-        // dd($request);
+         dd($request);
         // Varidationをおこなう
         $this->validate($request,Profile_2::$rules);
         
-        $profile_2 = new Profile_2();
+        $profile = new Profile_2();
         $form = $request->all();
         
         // フォームから送信されてきた_tokenを削除する
         unset($form['_token']);
       
         // データベースに保存する
-        $profile_2->fill($form);
-        $profile_2->save();
+        $profile->fill($form);
+        $profile->save();
       
-        
         return redirect('admin/profile/create_2');
     }
+    
+    public function index(Request $request)
+  {
+      $cond_title = $request->cond_title;
+      if ($cond_title != '') {
+          $posts = Profile_2::where('title', $cond_title)->get();
+      } else {
+        // それ以外はすべてのニュースを取得する
+          $posts = Profile_2::all();
+      }
+      return view('admin.profile.index', ['posts' => $posts, 'cond_title' => $cond_title]);
+  }
 
-    public function edit()
+
+    public function edit(Request $request)
     {
-        return view('admin.profile.edit_2');
+          // Profile Modelからデータを取得する
+      $profile = Profile_2::find($request->id);
+      if (empty($profile)) {
+        abort(404);    
+      }
+        return view('admin.profile.edit_2',['profile_form' => $profile]);
     }
 
-    public function update()
+    public function update(Request $request)
     {
-        return redirect('admin/profile/edit_2');
+        // Validationをかける
+      $this->validate($request, Profile_2::$rules);
+      // Profile Modelからデータを取得する
+      // dd($request);
+      $profile = Profile_2::find($request->id);
+      // 送信されてきたフォームデータを格納する
+      $profile_form = $request->all();
+      
+      unset($profile_form['_token']);
+      
+
+      // dd($profile);
+      // 該当するデータを上書きして保存する
+      $profile->fill($profile_form)->save();
+      
+        return redirect('admin/profile/');
     }
 }

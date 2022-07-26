@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-// 以下を追記することでNews Modelが扱えるようになる
 use App\Profile;
+
 use App\HistoryProfile;
 use Carbon\Carbon;
 
@@ -13,12 +14,12 @@ class ProfileController extends Controller
 {
     public function add()
     {
-        
         return view('admin.profile.create');
     }
     
      public function create(Request $request)
     {
+      
         // dd($request);
         // Varidationをおこなう
         $this->validate($request,Profile::$rules);

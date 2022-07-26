@@ -48,6 +48,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'NewsController@index');
 
+Route::get('/', 'ProfileController@index');
+
 
 Auth::routes();
 
@@ -56,7 +58,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
 
 
 
@@ -69,6 +70,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin'], function() {
     Route::get('news/create_2', 'Admin\NewsController_2@add')->middleware('auth');
     Route::post('news/create_2', 'Admin\NewsController_2@create'); # 追記
+    Route::get('news', 'Admin\NewsController_2@index')->middleware('auth');
+    Route::get('news/edit_2', 'Admin\NewsController_2@edit')->middleware('auth'); // 追記
+    Route::post('news/edit_2', 'Admin\NewsController_2@update')->middleware('auth'); // 追記
 });
 
 
@@ -81,8 +85,10 @@ Route::get('XXXXX/XXX', 'Admin\AAAController@bbb');
 Route::group(['prefix' => 'admin'], function() {
     Route::get('profile/create_2', 'Admin\ProfileController_2@add')->middleware('auth');
     Route::get('profile/edit_2','Admin\ProfileController_2@edit')->middleware('auth');
-    Route::post('profile/create_2', 'Admin\ProfileController_2@create');
-    Route::post('profile/edit_2', 'Admin\ProfileController_2@update');
+    Route::post('profile/create_2', 'Admin\ProfileController_2@create')->middleware('auth');
+    Route::post('profile/edit_2', 'Admin\ProfileController_2@update')->middleware('auth');
+     Route::get('profile/delete_2', 'Admin\ProfileController_2@delete')->middleware('auth');
+    // Route::get('profile', 'Admin\ProfileController_2@index')->middleware('auth'); 
 });
 
 
