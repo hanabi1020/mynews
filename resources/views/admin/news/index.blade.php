@@ -4,7 +4,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h2>ニュース一覧</h2>
+            <h2>ニュース一覧0000</h2>
         </div>
         <div class="row">
             <div class="col-md-4">
@@ -14,7 +14,7 @@
                 <form action="{{ action('Admin\NewsController@index') }}" method="get">
                     <div class="form-group row">
                         <label class="col-md-2">タイトル</label>
-                        <p>デプロイ課題</p>
+                        
                         <div class="col-md-8">
                             <input type="text" class="form-control" name="cond_title" value={{ $cond_title }}>
                         </div>
