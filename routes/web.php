@@ -66,30 +66,30 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
-//  新しく作り直したNewsController
-Route::group(['prefix' => 'admin'], function() {
-    Route::get('news/create_2', 'Admin\NewsController_2@add')->middleware('auth');
-    Route::post('news/create_2', 'Admin\NewsController_2@create'); # 追記
-    Route::get('news', 'Admin\NewsController_2@index')->middleware('auth');
-    Route::get('news/edit_2', 'Admin\NewsController_2@edit')->middleware('auth'); // 追記
-    Route::post('news/edit_2', 'Admin\NewsController_2@update')->middleware('auth'); // 追記
-});
+// //  新しく作り直したNewsController
+// Route::group(['prefix' => 'admin'], function() {
+//     Route::get('news/create_2', 'Admin\NewsController_2@add')->middleware('auth');
+//     Route::post('news/create_2', 'Admin\NewsController_2@create'); # 追記
+//     Route::get('news', 'Admin\NewsController_2@index')->middleware('auth');
+//     Route::get('news/edit_2', 'Admin\NewsController_2@edit')->middleware('auth'); // 追記
+//     Route::post('news/edit_2', 'Admin\NewsController_2@update')->middleware('auth'); // 追記
+// });
 
 
-// 18. 「PHP/Laravel 09 Routingについて理解する」の課題3
-Route::get('XXXXX/XXX', 'Admin\AAAController@bbb');
+// // 18. 「PHP/Laravel 09 Routingについて理解する」の課題3
+// Route::get('XXXXX/XXX', 'Admin\AAAController@bbb');
 
 
 
-// 新しく作り直したProfileController
-Route::group(['prefix' => 'admin'], function() {
-    Route::get('profile/create_2', 'Admin\ProfileController_2@add')->middleware('auth');
-    Route::get('profile/edit_2','Admin\ProfileController_2@edit')->middleware('auth');
-    Route::post('profile/create_2', 'Admin\ProfileController_2@create')->middleware('auth');
-    Route::post('profile/edit_2', 'Admin\ProfileController_2@update')->middleware('auth');
-     Route::get('profile/delete_2', 'Admin\ProfileController_2@delete')->middleware('auth');
-    // Route::get('profile', 'Admin\ProfileController_2@index')->middleware('auth'); 
-});
+// // 新しく作り直したProfileController
+// Route::group(['prefix' => 'admin'], function() {
+//     Route::get('profile/create_2', 'Admin\ProfileController_2@add')->middleware('auth');
+//     Route::get('profile/edit_2','Admin\ProfileController_2@edit')->middleware('auth');
+//     Route::post('profile/create_2', 'Admin\ProfileController_2@create')->middleware('auth');
+//     Route::post('profile/edit_2', 'Admin\ProfileController_2@update')->middleware('auth');
+//      Route::get('profile/delete_2', 'Admin\ProfileController_2@delete')->middleware('auth');
+//     // Route::get('profile', 'Admin\ProfileController_2@index')->middleware('auth'); 
+// });
 
 
 
